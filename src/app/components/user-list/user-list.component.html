@@ -1,0 +1,18 @@
+<div class="container">
+  <br>
+  <h3>Lista użytkowników</h3>
+    <ul class="list-group">
+      <li *ngFor="let user of (users$ | async)" class="list-group-item">
+        <div class="container-fluid">
+          <div class="row align-items-center">
+            <div class="col-8">
+              {{user.name}}
+            </div>
+            <div class="col" style="text-align: right">
+              <button class="btn btn-primary" (click)="navUserDetails(user.id)">Więcej</button>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+</div>

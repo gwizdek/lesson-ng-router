@@ -1,0 +1,18 @@
+<div class="container">
+    <br>
+    <h3>Szczegóły użytkownika</h3>
+
+    <div class="card" style="width: 20rem;">
+      <!-- <div class="loading-icon"></div> -->
+      <div *ngIf="loading" style="text-align: center; width: 320px; height: 200px;">
+        <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+      </div>
+      <img class="card-img-top" [hidden]="loading" (load)="loading = false" [src]="'https://placeimg.com/320/200/people&id='+user?.id"/>
+      <!-- <img class="card-img-top" [src]="'https://placeimg.com/320/200/people&id='+user?.id" alt="Card image cap"> -->
+      <div class="card-body">
+        <h4 class="card-title">{{user?.name}}</h4>
+        <p class="card-text">{{user?.address.street}} {{user?.address.suite}} {{user?.address.city}}</p>
+        <button class="btn btn-primary" (click)="onNext()">Następny</button>
+      </div>
+    </div>
+  </div>
