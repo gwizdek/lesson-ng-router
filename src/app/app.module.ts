@@ -8,6 +8,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { HomeComponent } from './components/home/home.component';
 
 const appRoutes: Routes = [
   { 
@@ -19,10 +20,15 @@ const appRoutes: Routes = [
     component: UserListComponent,
     data: { title: 'Heroes List' }
   },
-  { path: '',
-    redirectTo: '/users',
-    pathMatch: 'full'
+  {
+    path: '',
+    component: HomeComponent
   },
+  // { 
+  //   path: '',
+  //   redirectTo: '/users',
+  //   pathMatch: 'full'
+  // },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -31,7 +37,8 @@ const appRoutes: Routes = [
     AppComponent,
     UserListComponent,
     UserDetailComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    HomeComponent
   ],
   imports: [
     RouterModule.forRoot(
