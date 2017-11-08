@@ -1,4 +1,4 @@
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
@@ -11,13 +11,11 @@ import 'rxjs/add/observable/empty';
 @Injectable()
 export class UserService {
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   getUsers() : Observable<any> {
     return this.http.get('https://jsonplaceholder.typicode.com/users')
-      .map(res => {
-        let users = res.json();
-
+      .map((users: Array<any>) => {
         return users.map(user => {
           return {
             'id': user.id,
@@ -29,8 +27,7 @@ export class UserService {
 
   getUser(userId: number) : Observable<any> {
     return this.http.get(`https://jsonplaceholder.typicode.com/users/${userId}`)
-      .map(res => {
-        let user = res.json();
+      .map(user => {
         return user;
       })
       .catch(err => {
